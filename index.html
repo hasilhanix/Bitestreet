@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Bite Street — Contemporary Kitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#18130F; --ink-2:#241C15;
+  --cream:#FAF5EC; --surface:#FFFFFF;
+  --text:#221B14; --muted:#6E6255;
+  --border:#EAE0CE; --border-strong:#DCCDA9;
+  --ember:#C1501F; --ember-dark:#9C3E17; --amber:#E7A33B;
+  --shadow:0 3px 16px rgba(30,20,10,.06); --shadow-lg:0 30px 80px rgba(15,10,5,.35);
+  --radius:16px; --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+body{
+  margin:0;background:var(--cream);color:var(--text);
+  font-family:'Work Sans',ui-sans-serif,system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;
+  background-image:radial-gradient(rgba(24,19,15,.05) 1px, transparent 1px);
+  background-size:4px 4px;
+}
+img{max-width:100%;display:block}
+button{font:inherit}
+
+/* ---------- header ---------- */
+header.site{
+  position:relative;overflow:hidden;
+  padding:54px 20px 40px;text-align:center;
+  background:radial-gradient(120% 140% at 50% -10%, #2b2019 0%, var(--ink) 55%, var(--ink) 100%);
+  color:var(--cream);
+}
+header.site::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(60% 70% at 20% 0%, rgba(193,80,31,.35), transparent 60%),
+             radial-gradient(50% 60% at 85% 10%, rgba(231,163,59,.22), transparent 65%);
+  pointer-events:none;
+}
+.eyebrow-top{position:relative;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);font-weight:700;margin:0 0 10px}
+.brand{position:relative;margin:0;font-family:'Fraunces',serif;font-weight:700;font-size:clamp(38px,7vw,58px);letter-spacing:-1px;color:var(--cream)}
+.tagline{position:relative;margin:12px 0 0;font-size:12.5px;letter-spacing:1.6px;color:#D9CBB8;font-weight:500}
+.header-rule{position:relative;width:56px;height:3px;background:linear-gradient(90deg,var(--ember),var(--amber));margin:20px auto 0;border-radius:3px}
+
+/* ---------- category nav ---------- */
+nav.catnav{position:sticky;top:0;z-index:30;background:rgba(250,245,236,.92);backdrop-filter:blur(14px);padding:13px 0;border-bottom:1px solid var(--border)}
+.catnav-scroll{display:flex;gap:8px;overflow-x:auto;padding:0 17px;scrollbar-width:none}
+.catnav-scroll::-webkit-scrollbar{display:none}
+.cat-pill{position:relative;flex:0 0 auto;padding:9px 17px;border-radius:999px;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);font-size:13px;font-weight:650;cursor:pointer;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .15s ease}
+.cat-pill:hover{border-color:var(--ember)}
+.cat-pill:active{transform:scale(.96)}
+.cat-pill.active{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+
+/* ---------- main / sections ---------- */
+main{max-width:var(--maxw);margin:0 auto;padding:10px 17px 90px}
+section.menu-section{padding-top:46px;scroll-margin-top:90px}
+.section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.section-head.in{opacity:1;transform:translateY(0)}
+.section-num{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--ember);font-weight:600}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(27px,4vw,36px);font-weight:700;letter-spacing:-.6px;margin:0;color:var(--ink)}
+.section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border-strong),transparent)}
+
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:760px){.grid{grid-template-columns:1fr 1fr;gap:18px}}
+
+/* ---------- dish card ---------- */
+.card{
+  display:flex;align-items:stretch;gap:15px;background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--radius);padding:11px;
+  text-align:left;cursor:pointer;box-shadow:var(--shadow);width:100%;
+  opacity:0;transform:translateY(16px);
+  transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s ease,border-color .25s ease,opacity .5s ease;
+  will-change:transform;
+}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{box-shadow:0 18px 40px rgba(20,12,4,.14);border-color:var(--border-strong)}
+.card:active{transform:scale(.985)!important}
+.card-img-wrap{flex:0 0 104px;width:104px;height:104px;border-radius:12px;overflow:hidden;background:#f2ede1;position:relative}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.card:hover .card-img-wrap img{transform:scale(1.08)}
+.card-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.card-name{font-family:'Fraunces',serif;font-size:18px;font-weight:700;margin:0 0 5px;line-height:1.25;color:var(--ink)}
+.card-desc{font-size:13px;color:var(--muted);line-height:1.46;margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.card-price{font-size:14.5px;font-weight:750;color:var(--ember-dark)}
+.dietary{font-size:10px;font-weight:700;color:#7a6f5f;display:inline-flex;align-items:center}
+.sq{width:9px;height:9px;border-radius:2px;margin-right:6px;box-shadow:0 0 0 1px currentColor;border:1px solid #fff}
+.sq.green{background:#16803c;color:#16803c}
+.sq.red{background:#c1501f;color:#c1501f}
+.flavor-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:var(--ember-dark);background:#FBE9DB;border:1px solid #F0C9A6;border-radius:999px;padding:3px 9px;margin-bottom:8px;width:fit-content}
+.card-arrow{align-self:center;width:28px;height:28px;border:1px solid var(--border-strong);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);flex:0 0 auto;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .3s ease}
+.card:hover .card-arrow{background:var(--ember);border-color:var(--ember);color:#fff;transform:translateX(2px)}
+
+footer.site{text-align:center;padding:44px 20px calc(70px + env(safe-area-inset-bottom));color:#948773;font-size:12px;border-top:1px solid var(--border);background:var(--cream)}
+
+/* ---------- modal / bottom sheet ---------- */
+.backdrop{position:fixed;inset:0;background:rgba(15,10,5,.55);backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .3s ease;z-index:100}
+.backdrop.open{opacity:1;pointer-events:auto}
+
+.sheet{position:fixed;left:0;right:0;bottom:0;margin:auto;max-width:560px;max-height:90vh;background:var(--surface);border-radius:24px 24px 0 0;box-shadow:var(--shadow-lg);transform:translateY(100%);transition:transform .4s cubic-bezier(.19,1,.22,1);z-index:101;overflow:hidden;display:flex;flex-direction:column}
+.sheet.open{transform:translateY(0)}
+@media(min-width:640px){
+  .sheet{left:50%;right:auto;bottom:auto;top:50%;transform:translate(-50%,-46%) scale(.96);opacity:0;border-radius:24px;max-height:86vh;transition:transform .36s cubic-bezier(.19,1,.22,1),opacity .3s ease}
+  .sheet.open{transform:translate(-50%,-50%) scale(1);opacity:1}
+}
+.sheet-drag{width:38px;height:4px;background:#d7d0c0;border-radius:4px;margin:10px auto 2px}
+@media(min-width:640px){.sheet-drag{display:none}}
+.sheet-scroll{overflow-y:auto;-webkit-overflow-scrolling:touch}
+.sheet-img-wrap{width:100%;aspect-ratio:4/3;background:#f2ede1;position:relative;overflow:hidden}
+.sheet-img-wrap img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform .6s cubic-bezier(.19,1,.22,1)}
+.sheet.open .sheet-img-wrap img{transform:scale(1)}
+.close-btn{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(15,10,5,.6);color:#fff;font-size:20px;cursor:pointer;transition:background .18s ease,transform .15s ease}
+.close-btn:hover{background:var(--ember)}
+.close-btn:active{transform:scale(.9)}
+.sheet-content{padding:22px 23px calc(30px + env(safe-area-inset-bottom))}
+.sheet-eyebrow{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--ember-dark);font-weight:700;margin:0 0 6px}
+.sheet-name{font-family:'Fraunces',serif;font-size:28px;margin:0 0 10px;line-height:1.18;color:var(--ink)}
+.sheet-desc{font-size:15px;line-height:1.62;color:var(--muted);margin:0 0 18px}
+.sheet-foot{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px dashed var(--border-strong)}
+.sheet-price{font-family:'Fraunces',serif;font-size:25px;font-weight:700;color:var(--ink)}
+.sheet-tag{font-size:11px;color:#a99b84}
+
+.flavor-list{display:grid;gap:9px;margin-top:18px}
+.flavor-head{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:#a99b84;font-weight:700;margin:0 0 2px}
+.flavor-item{padding:13px 14px;border:1px solid var(--border);border-radius:12px;background:#FCF9F3;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease,border-color .18s ease,background .18s ease}
+.flavor-item.in{opacity:1;transform:translateY(0)}
+.flavor-item:hover{border-color:var(--border-strong);background:#F7F1E4}
+.flavor-item strong{font-family:'Fraunces',serif;font-size:15px;display:block;margin-bottom:2px;color:var(--ink)}
+.flavor-item span{font-size:13px;color:var(--muted);line-height:1.4}
+
+body.lock{overflow:hidden}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <p class="eyebrow-top">Est. on the corner</p>
+  <h1 class="brand">BITE STREET</h1>
+  <p class="tagline">GOOD FOOD · BOLD FLAVOURS · MADE FOR THE TABLE</p>
+  <div class="header-rule"></div>
+</header>
+
+<nav class="catnav" id="catnav"><div class="catnav-scroll" id="catnavScroll">
+<button class="cat-pill active" data-cat="all">All</button><button class="cat-pill" data-cat="starters">Starters</button><button class="cat-pill" data-cat="pizza">Pizza</button><button class="cat-pill" data-cat="burgers">Burgers</button><button class="cat-pill" data-cat="mains">Mains</button><button class="cat-pill" data-cat="salads">Salads</button><button class="cat-pill" data-cat="drinks">Drinks</button><button class="cat-pill" data-cat="desserts">Desserts</button>
+</div></nav>
+
+<main id="menuRoot"></main>
+
+<footer class="site">
+  Bite Street &middot; Contemporary Kitchen &middot; Prices in ₹
+</footer>
+
+<div class="backdrop" id="backdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetName">
+  <div class="sheet-drag"></div>
+  <div class="sheet-scroll">
+    <div class="sheet-img-wrap">
+      <img id="sheetImg" src="" alt="">
+      <button class="close-btn" id="closeBtn" aria-label="Close">&times;</button>
+    </div>
+    <div class="sheet-content">
+      <p class="sheet-eyebrow" id="sheetCat"></p>
+      <h2 class="sheet-name" id="sheetName"></h2>
+      <p class="sheet-desc" id="sheetDesc"></p>
+      <div class="sheet-foot">
+        <span class="sheet-price" id="sheetPrice"></span>
+        <span class="sheet-tag">Bite Street</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------------- data ---------------- */
+const categories=[
+  {id:"starters",label:"Starters",num:"01"},
+  {id:"pizza",label:"Pizza",num:"02"},
+  {id:"burgers",label:"Burgers",num:"03"},
+  {id:"mains",label:"Mains",num:"04"},
+  {id:"salads",label:"Salads",num:"05"},
+  {id:"drinks",label:"Drinks",num:"06"},
+  {id:"desserts",label:"Desserts",num:"07"}
+];
+
+const flavorSets={
+"Mojitos":[["Classic Mint & Lime","Fresh lime and torn mint muddled with soda, finished with a clean, crisp citrus edge."],["Strawberry Mojito","Fresh strawberry puree over mint and lime, shaken with soda for a bright, fruity twist."],["Passion Fruit Mojito","Tangy passion fruit with mint, lime and soda — tropical, fragrant and refreshing."],["Mango Mojito","Ripe mango blended with mint, lime and soda for a smooth, sweet-tart finish."]],
+"Smoothies":[["Mango Smoothie","Ripe mango blended until thick and silky, with nothing to get in the way of the fruit."],["Coconut Smoothie","Creamy coconut blended cold and smooth — light, tropical and naturally sweet."],["Strawberry Smoothie","Fresh strawberries blended into a naturally fruity, rosy-pink smoothie."],["Banana Smoothie","Ripe banana blended thick and creamy, with a gentle natural sweetness."]],
+"Milkshakes":[["Vanilla","Classic creamy vanilla, blended cold and finished smooth."],["Chocolate","Rich, deep chocolate blended with chilled milk and a scoop of ice cream."],["Strawberry","Sweet, creamy strawberry with bright, fruity notes in every sip."],["Oreo","Chocolate cookie crumbled through a vanilla shake, finished with a crunchy topping."]],
+"Ice Cream":[["Vanilla","Classic, creamy vanilla made simply and served generously."],["Chocolate","Deep, rich chocolate with a smooth, velvety finish."],["Strawberry","Sweet strawberry ice cream with a bright, fresh fruit note."],["Pistachio","Creamy pistachio with a subtle roasted, nutty finish."]],
+"New York Cheesecake":[["Classic","A silky baked cheesecake over a buttery, crumbled biscuit base."],["Strawberry","Creamy baked cheesecake finished with a glossy strawberry topping."],["Chocolate","Rich chocolate swirled through a dense, creamy cheesecake."],["Blueberry","Creamy cheesecake finished with a sweet-tart blueberry compote."]]
+};
+
+const dishes=[
+{cat:"starters",name:"Crispy Calamari",desc:"Tender rings of calamari, lightly battered and fried until golden and crisp. Served hot with a bright, tangy house dip that cuts straight through the richness.",price:320,kind:"nonveg",img:"images/air-fryer-calamari-8.jpg",alt:"Crispy fried calamari rings"},
+{cat:"starters",name:"Garlic Butter Prawns",desc:"Plump prawns sautéed in garlic butter with fresh herbs and a squeeze of citrus, finished with a gentle chilli kick for a warm, savoury bite.",price:360,kind:"nonveg",img:"images/images (1).jpg",alt:"Garlic butter prawns with lemon"},
+{cat:"starters",name:"Chicken Wings",desc:"Crispy-skinned chicken wings tossed in a smoky-sweet house glaze, char-kissed at the edges with just enough spice to keep you reaching for more.",price:280,kind:"nonveg",img:"images/Baked-Chicken-Wings-3-500x500.jpg",alt:"Baked chicken wings"},
+{cat:"starters",name:"Bruschetta",desc:"Toasted sourdough piled high with ripe tomato, fresh basil and a drizzle of extra-virgin olive oil, finished with a light balsamic glaze for a bright, garden-fresh start.",price:220,kind:"veg",img:"images/Classic-Bruschetta-4.jpg",alt:"Classic bruschetta"},
+{cat:"starters",name:"Mozzarella Sticks",desc:"A golden, crackling crumb shell around a molten mozzarella centre, served with a rich, slow-simmered tomato dip for that classic stretchy first bite.",price:240,kind:"veg",img:"images/images (2).jpg",alt:"Fried mozzarella sticks with marinara"},
+{cat:"starters",name:"Loaded Nachos",desc:"A generous pile of crisp tortilla chips layered with melted cheese, jalapeños, salsa and fresh toppings — built for sharing, best eaten while it's still warm.",price:260,kind:"veg",img:"images/Nachos-Recipe-1-1.jpg",alt:"Loaded nachos"},
+
+{cat:"pizza",name:"Margherita Pizza",desc:"A stone-baked classic topped with slow-cooked tomato, fresh mozzarella and torn basil, finished with a thread of extra-virgin olive oil for pure, simple flavour.",price:320,kind:"veg",img:"images/images (10).jpg",alt:"Margherita pizza"},
+{cat:"pizza",name:"Pepperoni Pizza",desc:"A crisp-edged base loaded with melted mozzarella, slow-cooked tomato sauce and generous curls of savoury pepperoni, baked hot and fast for a satisfying crunch.",price:420,kind:"nonveg",img:"images/pepperoni-pizza6+srgb.jpg",alt:"Pepperoni pizza"},
+{cat:"pizza",name:"BBQ Chicken Pizza",desc:"Tender shredded chicken glazed in smoky barbecue sauce, layered over mozzarella and red onion — a sweet-and-smoky favourite straight from the oven.",price:390,kind:"nonveg",img:"images/barbecue-bbq-chicken-pizza.jpg",alt:"BBQ chicken pizza"},
+{cat:"pizza",name:"Four Cheese Pizza",desc:"A rich, gooey blend of mozzarella and three more carefully selected cheeses over a delicate tomato base — deeply savoury, made for cheese lovers.",price:430,kind:"veg",img:"images/images (11).jpg",alt:"Four cheese pizza"},
+{cat:"pizza",name:"Truffle Mushroom Pizza",desc:"Roasted wild mushrooms and mozzarella finished with fragrant shaved truffle and fresh thyme — earthy, indulgent and unmistakably rich.",price:440,kind:"veg",img:"images/images (12).jpg",alt:"Truffle mushroom pizza"},
+
+{cat:"burgers",name:"Classic Beef Burger",desc:"A juicy, char-grilled beef patty stacked with melted cheese, crisp lettuce, ripe tomato and our house sauce, all packed into a toasted brioche bun.",price:390,kind:"nonveg",img:"images/images (13).jpg",alt:"Classic beef burger"},
+{cat:"burgers",name:"Crispy Chicken Burger",desc:"A crunchy, golden chicken fillet with crisp lettuce and a creamy house dressing, served in a soft, toasted brioche bun for the perfect bite.",price:360,kind:"nonveg",img:"images/images (14).jpg",alt:"Crispy chicken burger"},
+{cat:"burgers",name:"BBQ Bacon Burger",desc:"A beef patty stacked with smoky bacon, melted cheese, pickles and a generous swipe of barbecue sauce, finished with fresh crunch for balance.",price:450,kind:"nonveg",img:"images/images (15).jpg",alt:"BBQ bacon burger"},
+{cat:"burgers",name:"Double Cheese Burger",desc:"Two juicy beef patties layered with double melted cheese, tangy pickles and our signature burger sauce — built for serious appetites.",price:490,kind:"nonveg",img:"images/images (16).jpg",alt:"Double cheese burger"},
+{cat:"burgers",name:"Chicken Cheese Burger",desc:"A seasoned, tender chicken patty topped with melted cheese, crisp lettuce and a creamy house sauce — simple, satisfying and made fresh to order.",price:370,kind:"nonveg",img:"images/images (14).jpg",alt:"Chicken cheese burger"},
+
+{cat:"mains",name:"Grilled Chicken Steak",desc:"A juicy grilled chicken breast, char-marked and tender, served with fresh lemon and herbs and your choice of house sauce.",price:420,kind:"nonveg",img:"images/images (4).jpg",alt:"Grilled chicken breast"},
+{cat:"mains",name:"Beef Steak",desc:"Tender grilled beef, thickly sliced and finished with flaky salt — a hearty, satisfying plate for the serious carnivore.",price:620,kind:"nonveg",img:"images/images (8).jpg",alt:"Sliced grilled beef steak"},
+{cat:"mains",name:"Grilled Salmon",desc:"Pan-seared salmon finished with lemon and fresh herbs — light, clean and full of flavour.",price:580,kind:"nonveg",img:"images/images (7).jpg",alt:"Grilled salmon fillets"},
+{cat:"mains",name:"Chicken Schnitzel",desc:"A golden, crumbed chicken breast fried until crisp, served with a wedge of lemon and a fresh side salad.",price:390,kind:"nonveg",img:"images/images (9).jpg",alt:"Chicken schnitzel with salad"},
+{cat:"mains",name:"Creamy Mushroom Chicken",desc:"Tender pasta tossed through a silky wild mushroom cream sauce, finished with parmesan — comfort food, done right.",price:460,kind:"nonveg",img:"images/images (3).jpg",alt:"Creamy mushroom pasta"},
+{cat:"mains",name:"Lasagna",desc:"Layers of pasta in a rich, slow-simmered meat ragù, baked until golden — a hearty Italian classic.",price:390,kind:"nonveg",img:"images/images (6).jpg",alt:"Spaghetti in rich meat ragù"},
+
+{cat:"salads",name:"Caesar Salad",desc:"Crisp romaine, shaved parmesan and toasted croutons tossed in a creamy house Caesar dressing — a timeless classic, made fresh to order.",price:260,kind:"veg",img:"images/caesar-salad-recipe.jpg",alt:"Caesar salad"},
+{cat:"salads",name:"Greek Salad",desc:"Ripe tomato, cucumber, olives, red onion and feta tossed with lemon, olive oil and oregano — bright, fresh and full of Mediterranean flavour.",price:250,kind:"veg",img:"images/images (17).jpg",alt:"Greek salad"},
+{cat:"salads",name:"Mushroom Salad",desc:"Warm sautéed mushrooms over crisp greens with toasted almonds, finished with a light dressing — earthy and refreshing in every bite.",price:280,kind:"veg",img:"images/images (19).jpg",alt:"Warm mushroom salad with almonds"},
+
+{cat:"drinks",name:"Mojitos",desc:"A refreshing mint-and-lime base, shaken with soda and finished with your choice of house fruit flavour. Tap to see everything we're pouring.",price:220,kind:"veg",img:"images/images (22).jpg",alt:"A row of colourful mojitos",group:"Mojitos"},
+{cat:"drinks",name:"Smoothies",desc:"Fresh fruit blended until thick, cold and creamy. Pick your flavour below and we'll blend it fresh to order.",price:240,kind:"veg",img:"images/5-fruit-and-veggie-smoothies-1.jpg",alt:"Fruit smoothies",group:"Smoothies"},
+{cat:"drinks",name:"Milkshakes",desc:"Rich, chilled and generously topped — our milkshakes come in a few classic and indulgent flavours. Take a look below.",price:250,kind:"veg",img:"images/images (24).jpg",alt:"Classic milkshake with whipped cream",group:"Milkshakes"},
+{cat:"drinks",name:"Iced Coffee",desc:"Chilled coffee blended with cold milk and ice for a smooth, wake-you-up finish — simple, strong and refreshing.",price:190,kind:"veg",img:"images/images (26).jpg",alt:"Iced coffee"},
+{cat:"drinks",name:"Passion Fruit Cooler",desc:"Bright passion fruit and citrus topped with chilled soda — a light, tropical sipper for a warm afternoon.",price:210,kind:"veg",img:"images/images (21).jpg",alt:"Passion fruit cooler"},
+
+{cat:"desserts",name:"New York Cheesecake",desc:"A silky baked cheesecake over a buttery crumb base, available in a few house flavours. Tap to choose yours.",price:300,kind:"veg",img:"images/images (27).jpg",alt:"New York cheesecake with raspberry",group:"New York Cheesecake"},
+{cat:"desserts",name:"Chocolate Brownie",desc:"A warm, fudgy chocolate brownie with a soft, molten centre and deep cocoa flavour — rich enough to share, if you want to.",price:240,kind:"veg",img:"images/images (28).jpg",alt:"Chocolate brownie"},
+{cat:"desserts",name:"Tiramisu",desc:"Coffee-soaked sponge layered with mascarpone cream and a dusting of cocoa — a classic Italian finish to the meal.",price:290,kind:"veg",img:"images/images (29).jpg",alt:"Tiramisu"},
+{cat:"desserts",name:"Chocolate Lava Cake",desc:"A warm chocolate cake with a molten centre, made to order and best enjoyed the moment it arrives at the table.",price:320,kind:"veg",img:"images/images (30).jpg",alt:"Chocolate lava cake"},
+{cat:"desserts",name:"Crème Brûlée",desc:"Silky vanilla custard finished with a thin, caramelised sugar crust that cracks with the very first spoonful.",price:280,kind:"veg",img:"images/images (31).jpg",alt:"Crème brûlée with berries"},
+{cat:"desserts",name:"Ice Cream",desc:"Creamy, classic ice cream in a few house flavours. Pick your favourite below.",price:180,kind:"veg",img:"images/images (32).jpg",alt:"Ice cream cones",group:"Ice Cream"}
+];
+
+/* ---------------- render ---------------- */
+const root=document.getElementById("menuRoot");
+function catLabel(id){return categories.find(c=>c.id===id)?.label||id;}
+
+categories.forEach(cat=>{
+  const section=document.createElement("section");
+  section.className="menu-section";
+  section.id="cat-"+cat.id;
+  section.dataset.cat=cat.id;
+
+  const head=document.createElement("div");
+  head.className="section-head";
+  head.innerHTML=`<span class="section-num">${cat.num}</span><h2 class="section-title">${cat.label}</h2><span class="section-line"></span>`;
+  section.appendChild(head);
+
+  const grid=document.createElement("div");
+  grid.className="grid";
+
+  dishes.filter(d=>d.cat===cat.id).forEach(dish=>{
+    const card=document.createElement("button");
+    card.className="card";
+    card.type="button";
+    card.setAttribute("aria-haspopup","dialog");
+    const diet=dish.kind==="veg"
+      ? '<span class="dietary"><span class="sq green"></span>Veg</span>'
+      : '<span class="dietary"><span class="sq red"></span>Non-veg</span>';
+    const badge=dish.group ? '<div class="flavor-badge">4 flavours inside</div>' : '';
+    card.innerHTML=`<div class="card-img-wrap"><img src="${dish.img}" alt="${dish.alt}" loading="lazy"></div><div class="card-body">${badge}<h3 class="card-name">${dish.name}</h3><p class="card-desc">${dish.desc}</p><div class="card-foot">${diet}<span class="card-price">₹${dish.price}</span></div></div><span class="card-arrow" aria-hidden="true">→</span>`;
+    card.addEventListener("click",()=>openSheet(dish));
+    grid.appendChild(card);
+  });
+
+  section.appendChild(grid);
+  root.appendChild(section);
+});
+
+/* ---------------- scroll reveal ---------------- */
+const revealTargets=document.querySelectorAll(".section-head, .card");
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{threshold:0.12, rootMargin:"0px 0px -40px 0px"});
+  revealTargets.forEach(el=>io.observe(el));
+} else {
+  revealTargets.forEach(el=>el.classList.add("in"));
+}
+
+/* ---------------- subtle card tilt (desktop, pointer devices only) ---------------- */
+const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!prefersReduced && window.matchMedia("(hover:hover) and (pointer:fine)").matches){
+  document.addEventListener("mousemove",(e)=>{
+    const card=e.target.closest(".card");
+    if(!card) return;
+    const r=card.getBoundingClientRect();
+    const px=(e.clientX-r.left)/r.width-0.5;
+    const py=(e.clientY-r.top)/r.height-0.5;
+    card.style.transform=`translateY(-3px) rotateX(${(-py*3).toFixed(2)}deg) rotateY(${(px*3).toFixed(2)}deg)`;
+  });
+  document.addEventListener("mouseout",(e)=>{
+    const card=e.target.closest(".card");
+    if(card) card.style.transform="";
+  });
+}
+
+/* ---------------- category nav behaviour ---------------- */
+const pills=Array.from(document.querySelectorAll(".cat-pill"));
+const sections=Array.from(document.querySelectorAll(".menu-section"));
+const catnav=document.getElementById("catnav");
+
+pills.forEach(pill=>{
+  pill.addEventListener("click",()=>{
+    const cat=pill.dataset.cat;
+    setActivePill(cat);
+    if(cat==="all"){
+      window.scrollTo({top:0,behavior:"smooth"});
+    } else {
+      const target=document.getElementById("cat-"+cat);
+      if(target){
+        const y=target.getBoundingClientRect().top+window.scrollY-(catnav.offsetHeight+90);
+        window.scrollTo({top:y,behavior:"smooth"});
+      }
+    }
+  });
+});
+
+function setActivePill(cat){
+  pills.forEach(p=>p.classList.toggle("active",p.dataset.cat===cat));
+}
+
+let ticking=false;
+window.addEventListener("scroll",()=>{
+  if(ticking) return;
+  ticking=true;
+  requestAnimationFrame(()=>{
+    const offset=catnav.offsetHeight+100;
+    let current="all";
+    for(const sec of sections){
+      const rect=sec.getBoundingClientRect();
+      if(rect.top-offset<=0) current=sec.dataset.cat;
+    }
+    if(window.scrollY<80) current="all";
+    setActivePill(current);
+    ticking=false;
+  });
+});
+
+/* ---------------- bottom sheet / modal ---------------- */
+const backdrop=document.getElementById("backdrop");
+const sheet=document.getElementById("sheet");
+const sheetImg=document.getElementById("sheetImg");
+const sheetCat=document.getElementById("sheetCat");
+const sheetName=document.getElementById("sheetName");
+const sheetDesc=document.getElementById("sheetDesc");
+const sheetPrice=document.getElementById("sheetPrice");
+const closeBtn=document.getElementById("closeBtn");
+
+let lastFocused=null;
+
+function openSheet(dish){
+  lastFocused=document.activeElement;
+  sheetImg.src=dish.img;
+  sheetImg.alt=dish.alt;
+  sheetCat.textContent=catLabel(dish.cat);
+  sheetName.textContent=dish.name;
+  sheetDesc.textContent=dish.desc;
+  sheetPrice.textContent="₹"+dish.price;
+
+  const old=document.getElementById("flavorList");
+  if(old) old.remove();
+
+  const flavors=flavorSets[dish.group];
+  if(flavors){
+    const list=document.createElement("div");
+    list.id="flavorList";
+    list.className="flavor-list";
+    list.innerHTML='<p class="flavor-head">Choose a flavour</p>';
+    flavors.forEach((x,i)=>{
+      const item=document.createElement("div");
+      item.className="flavor-item";
+      item.innerHTML=`<strong>${x[0]}</strong><span>${x[1]}</span>`;
+      list.appendChild(item);
+      setTimeout(()=>item.classList.add("in"), 100+i*70);
+    });
+    document.querySelector(".sheet-content").appendChild(list);
+  }
+
+  document.body.classList.add("lock");
+  backdrop.classList.add("open");
+  requestAnimationFrame(()=>sheet.classList.add("open"));
+  closeBtn.focus();
+}
+
+function closeSheet(){
+  sheet.classList.remove("open");
+  backdrop.classList.remove("open");
+  document.body.classList.remove("lock");
+  if(lastFocused) lastFocused.focus();
+}
+
+closeBtn.addEventListener("click",closeSheet);
+backdrop.addEventListener("click",closeSheet);
+document.addEventListener("keydown",(e)=>{
+  if(e.key==="Escape" && backdrop.classList.contains("open")) closeSheet();
+});
+</script>
+</body>
+</html>
